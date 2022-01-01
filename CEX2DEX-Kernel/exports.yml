@@ -1,0 +1,16 @@
+Cex2DexKernel:
+  attributes: 7
+  version:
+    major: 1
+    minor: 1
+  main:
+    start: module_start
+  modules:
+    Cex2DexForUser:
+      syscall: true
+      functions:
+        - install_org_cid
+        - install_testkit_cid
+        - verify_open_psid
+        - install_open_psid
+        - temp_cex_spoof
