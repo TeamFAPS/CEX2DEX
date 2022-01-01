@@ -1,6 +1,6 @@
 # CEX2DEX
 
-A tool of Retail to TestKit converter for PS Vita.
+A PS Vita application to convert between Retail and TestKit.
 
 # Install
 
@@ -30,8 +30,16 @@ Also keep in mind that these have been thoroughly tested but can cause irreparab
 
 # Credits
 
-Yifan Lu for AES CTR exploit on vita.
+PrincessOfSleeping for AES CTR exploit, implementation and all the code.
 
-CelesteBlue for the ConsoleId wiki.
+Yifan Lu for AES CTR exploit hint on PS Vita.
+
+CelesteBlue for PSP/PS3/PS Vita IDStorage RE and ConsoleId wiki.
+
+Kamikaze (CelesteBlue's PS Vita RIP 2020-2020) for giving its life to pseudo-science.
+
+Francesco for testing and keeping the project secret (I guess he did).
 
 Everybody who contributed on vitasdk.
+
+SKGleba for his gallantry.
