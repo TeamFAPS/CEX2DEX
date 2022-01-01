@@ -6,7 +6,7 @@ A PS Vita application to convert between Retail and TestKit.
 
 Install [CmepMgr](https://github.com/Princess-of-Sleeping/CmepMgr/releases) (required).
 
-Install [reF00D v1.1.1](https://github.com/dots-tb/reF00D/releases/tag/1.1.1) or higher version (required).
+Install [reF00D v1.1](https://github.com/dots-tb/reF00D/releases/) or higher version (required).
 
 Install vpk and install TestKit cid from the CEX2DEX menu.
 
