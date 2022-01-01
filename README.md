@@ -28,9 +28,9 @@ Adjustments are still needed to install on PS TV.
 
 If CEX2DEX is restarted on the "loading kernel helper" many times, the required ones are not installed.
 
-Note that this makes a permanent change to the device.
+Please note that the installation of DEX CID will permanently change the device.
 
-Also keep in mind that these have been thoroughly tested but can cause irreparable damage to your device.
+Also keep in mind that these have been thoroughly tested but can cause unrecoverable damage to your device.
 
 # Credits
 
