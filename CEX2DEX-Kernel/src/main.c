@@ -11,6 +11,7 @@
 #include <psp2kern/kernel/cpu.h>
 #include <psp2kern/io/fcntl.h>
 #include <psp2kern/idstorage.h>
+#include <psp2kern/sblaimgr.h>
 #include <taihen.h>
 #include <cmep_mgr.h>
 #include "../../cmep_comm_types.h"
@@ -361,7 +362,7 @@ int install_testkit_cid(void){
 	ENTER_SYSCALL(state);
 
 	SceKblParam *kbl_param = ksceKernelSysrootGetKblParam();
-	if(is_dex == 0 && kbl_param->current_fw_version == 0x3600000){
+	if(is_dex == 0 && kbl_param->current_fw_version == 0x3600000 && ksceSblAimgrIsGenuineDolce() == 0){
 		res = installDexCid();
 	}else{
 		res = -1;
@@ -379,7 +380,7 @@ int install_org_cid(void){
 	ENTER_SYSCALL(state);
 
 	SceKblParam *kbl_param = ksceKernelSysrootGetKblParam();
-	if(kbl_param != NULL && kbl_param->current_fw_version == 0x3600000){
+	if(kbl_param != NULL && kbl_param->current_fw_version == 0x3600000 && ksceSblAimgrIsGenuineDolce() == 0){
 		res = installOrgCid();
 	}else{
 		res = -1;
