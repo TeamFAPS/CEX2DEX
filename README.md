@@ -20,6 +20,10 @@ Select uninstall DEX cid from the CEX2DEX menu to revert to the original CID.
 
 # Caution
 
+<h2>**DO NOT INSTALL THIS ON PS TV**</h2>
+
+Adjustments are still needed to install on PS TV.
+
 **Currently the application only works with 3.60**
 
 If CEX2DEX is restarted on the "loading kernel helper" many times, the required ones are not installed.
