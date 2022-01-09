@@ -166,14 +166,30 @@ end_cmep_comm:
 int installDexCid(void){
 
 	int res;
+	char leaf[0x200];
+
+	memset(leaf, 0, sizeof(leaf));
+
+	res = ksceIdStorageReadLeaf(1, leaf);
+	if(res < 0){
+		return res;
+	}
 
 	/*
 	 * Brick warning: If you installed PS TV CID to FAT/Slim, Loaded to `display driver` that doesn't fit the device on boot time, resulting in a brick.
 	 *                This is same even FAT/Slim CID to PS TV.
 	 */
 	if(ksceSblAimgrIsGenuineDolce() == 0){
+		if((__builtin_bswap16(*(uint16_t *)(&leaf[0x66])) & 0x200) != 0){ // PS TV Device
+			return 0x80FF0001;
+		}
+
 		res = installConsoleId(dex_cid);
 	}else{
+		if((__builtin_bswap16(*(uint16_t *)(&leaf[0x66])) & 0x200) == 0){ // Not PS TV Device
+			return 0x80FF0001;
+		}
+
 		res = installConsoleId(dex_cid_for_dolce);
 	}
 
