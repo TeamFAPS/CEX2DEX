@@ -83,6 +83,14 @@ int cid_check(const void *cid){
 	if(cid8[6] == 0x02 && cid8[7] == 0x02)
 		goto check_8;
 
+	/*
+	 * if(cid8[6] == 0x04 && cid8[7] == 0x08) // PS TV Development Kit
+	 *	goto check_8;
+	 */
+
+	if(cid8[6] == 0x06 && cid8[7] == 0x02) // PS TV Prototype
+		goto check_8;
+
 	return -1;
 
 check_8:

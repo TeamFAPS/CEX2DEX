@@ -29,6 +29,13 @@ const char dex_cid[16] = {
 	0x10, 0x8D, 0x40, 0x29
 };
 
+const char dex_cid_for_dolce[16] = {
+	0x00, 0x00, 0x00, 0x01,
+	0x01, 0x02, 0x06, 0x02,
+	0x0C, 0x00, 0x00, 0x93,
+	0x1F, 0xC7, 0xFF, 0x2F 
+};
+
 const char diag_cid[16] = {
 	0x00, 0x00, 0x00, 0x01,
 	0x01, 0x03, 0x00, 0x10,
@@ -157,7 +164,20 @@ end_cmep_comm:
 }
 
 int installDexCid(void){
-	return installConsoleId(dex_cid);
+
+	int res;
+
+	/*
+	 * Brick warning: If you installed PS TV CID to FAT/Slim, Loaded to `display driver` that doesn't fit the device on boot time, resulting in a brick.
+	 *                This is same even FAT/Slim CID to PS TV.
+	 */
+	if(ksceSblAimgrIsGenuineDolce() == 0){
+		res = installConsoleId(dex_cid);
+	}else{
+		res = installConsoleId(dex_cid_for_dolce);
+	}
+
+	return res;
 }
 
 int installOrgCid(void){
@@ -168,7 +188,7 @@ int installOrgCid(void){
 	SceKblParam *kbl_param;
 
 	/*
-	 * This check is necessary because uninstalling dex cid from vita with testkit os0 installed will result in bsod brick.
+	 * Brick warning: This check is necessary because uninstalling dex cid from vita with testkit os0 installed will result in bsod brick.
 	 */
 	res = ksceKernelSearchModuleByName("SceKernelBlueScreenOfDeath");
 	if(res >= 0){
@@ -362,7 +382,7 @@ int install_testkit_cid(void){
 	ENTER_SYSCALL(state);
 
 	SceKblParam *kbl_param = ksceKernelSysrootGetKblParam();
-	if(is_dex == 0 && kbl_param->current_fw_version == 0x3600000 && ksceSblAimgrIsGenuineDolce() == 0){
+	if(is_dex == 0 && kbl_param->current_fw_version == 0x3600000){
 		res = installDexCid();
 	}else{
 		res = -1;
@@ -380,7 +400,7 @@ int install_org_cid(void){
 	ENTER_SYSCALL(state);
 
 	SceKblParam *kbl_param = ksceKernelSysrootGetKblParam();
-	if(kbl_param != NULL && kbl_param->current_fw_version == 0x3600000 && ksceSblAimgrIsGenuineDolce() == 0){
+	if(kbl_param != NULL && kbl_param->current_fw_version == 0x3600000){
 		res = installOrgCid();
 	}else{
 		res = -1;
