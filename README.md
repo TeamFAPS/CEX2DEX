@@ -20,9 +20,7 @@ Select uninstall DEX cid from the CEX2DEX menu to revert to the original CID.
 
 # Caution
 
-<h2>**DO NOT INSTALL THIS ON PS TV**</h2>
-
-Adjustments are still needed to install on PS TV.
+<h2><font color="red">**If you using system spoofing plugin, Disable that's plugin.**</font></h2>
 
 **Currently the application only works with 3.60**
 
